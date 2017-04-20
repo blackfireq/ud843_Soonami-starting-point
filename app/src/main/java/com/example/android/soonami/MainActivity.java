@@ -174,9 +174,12 @@ public class MainActivity extends AppCompatActivity {
                 if(urlConnection.getResponseCode() == 200) {
                     inputStream = urlConnection.getInputStream();
                     jsonResponse = readFromStream(inputStream);
+                } else {
+                    Log.e("makeHttpRequest","Erro response code: "+ urlConnection.getResponseCode() );
                 }
             } catch (IOException e) {
                 // TODO: Handle the exception
+                Log.e("makeHttpRequest","Problem retrieving the earthquake JSON results.", e);
             } finally {
                 if (urlConnection != null) {
                     urlConnection.disconnect();
